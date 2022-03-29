@@ -1,0 +1,27 @@
+[package]
+name = "borsh-fuzz"
+version = "0.0.0"
+authors = ["Automatically generated"]
+publish = false
+edition = "2018"
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+bigdecimal = "0.3"
+
+[dependencies.borsh]
+path = ".."
+features = ["bigdecimal"]
+
+# Prevent this from interfering with workspaces
+[workspace]
+members = ["."]
+
+[[bin]]
+name = "fuzzinicity"
+path = "fuzz_targets/fuzzinicity.rs"
+test = false
+doc = false
